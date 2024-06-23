@@ -588,7 +588,6 @@ a:active {
             content: "";
             top: 8px;
         }
-        /*  */
         .menu__box {
             display: block;
             position: fixed;
@@ -598,11 +597,27 @@ a:active {
             width: 100%;
             height: 100%;
             margin: 0;
-            padding: 80px 0;
-            list-style: none;
-            text-align: center;
-            background-color: #eceff1;
-            box-shadow: 1px 0px 6px rgba(0, 0, 0, 0.2);
+            padding: 72px 16px 40px;
+            background-color: var(--white);
+        }
+        .header-link {
+            padding: 0;
+        }
+        .nav .list {
+            flex-direction: column;
+            gap: 40px;
+            font-size: 36px;
+            margin-bottom: 168px;
+        }
+
+        .address .list {
+            font-size: 20px;
+            flex-direction: column;
+            gap: 24px;
+            margin-bottom: 48px;
+        }
+        .social-icons-list {
+            gap: 40px;
         }
         /* элементы меню */
         .menu__item {
@@ -618,16 +633,11 @@ a:active {
             background-color: #cfd8dc;
         }
         #menu__toggle:checked ~ .menu__btn > span {
-            width: 9.5px;
-            transform: rotate(45deg);
+            display: none;
         }
-        #menu__toggle:checked ~ .menu__btn > span::before {
-            top: 0;
-            transform: rotate(0);
-        }
-        #menu__toggle:checked ~ .menu__btn > span::after {
-            top: 0;
-            transform: rotate(90deg);
+        #menu__toggle:checked ~ .menu__btn {
+            right: 24px;
+            top: 24px;
         }
         #menu__toggle:checked ~ .menu__box {
             visibility: visible;
@@ -719,6 +729,13 @@ a:active {
         flex-wrap: wrap;
         justify-content: center;
     }
+    .modal {
+        width: calc(100% - 32px);
+    }
+    .accept-text {
+        align-items: center;
+        display: flex;
+    }
 }
 @media (min-width: 768px) {
     .header .logo {
@@ -799,6 +816,9 @@ a:active {
         max-width: 100%;
         margin: 0;
         margin-left: 92px;
+    }
+    .modal {
+        width: 408px;
     }
 }
 
