@@ -34,7 +34,6 @@ a:active {
     margin-bottom: 72px;
 }
 .element-title {
-    font-size: 20px;
     font-weight: 500;
     line-height: 1.2;
     margin-bottom: 8px;
@@ -50,9 +49,9 @@ a:active {
     padding: 120px 0;
 }
 .container {
-    width: 1158px;
+    max-width: 1160px;
     margin: 0 auto;
-    padding: 0 15px;
+    padding: 0 16px;
 }
 .column {
     flex-direction: column;
@@ -83,20 +82,14 @@ a:active {
     border-bottom: 1px solid var(--cornflower);
     box-shadow: 0px 2px 1px rgba(46, 47, 66, 0.08),
         0px 1px 1px rgba(46, 47, 66, 0.16), 0px 1px 6px rgba(46, 47, 66, 0.08);
-    .logo {
-        margin-right: 76px;
-    }
     .address {
-        margin-left: 332px;
         font-style: normal;
     }
     .logo-span {
         color: var(--navy-blue);
     }
 }
-.header-list {
-    gap: 40px;
-}
+
 .nav-link {
     color: var(--navy-blue);
     position: relative;
@@ -184,7 +177,7 @@ a:active {
 }
 
 .feature-icon {
-    display: flex;
+    display: none;
     align-items: center;
     height: 112px;
     align-items: center;
@@ -208,9 +201,8 @@ a:active {
 .card-list {
     gap: 24px;
 }
-.team .c-width,
-.features .c-width {
-    width: calc((100% - 72px) / 4);
+.team .c-width {
+    width: 264px;
 }
 .card {
     border-radius: 0px 0px 4px 4px;
@@ -247,11 +239,7 @@ a:active {
     box-shadow: 0 2px 1px 0 rgba(46, 47, 66, 0.08),
         0 1px 1px 0 rgba(46, 47, 66, 0.16), 0 1px 6px 0 rgba(46, 47, 66, 0.08);
 }
-.portfolio {
-    .c-width {
-        width: calc((100% - 48px) / 3);
-    }
-}
+
 .portfolio .card-content {
     border: 1px solid var(--cornflower);
     text-align: left;
@@ -341,10 +329,6 @@ a:active {
 }
 .portfolio .card:hover .app-info {
     transform: translateY(0);
-}
-
-.subscribe {
-    margin-left: 80px;
 }
 
 .subscribe-form {
@@ -465,6 +449,13 @@ a:active {
     letter-spacing: 0.04em;
     margin-bottom: 4px;
 }
+.accept-text {
+    display: block;
+    color: var(--light-slate);
+    font-size: 12px;
+    line-height: 1.17;
+    letter-spacing: 0.04em;
+}
 .modal-form .field-container {
     position: relative;
 }
@@ -515,22 +506,23 @@ a:active {
     height: 16px;
     border: 1px solid var(--navy-blue-modal);
     border-radius: 2px;
-    transition: background-color var(--animation), border var(--animation),
-        fill var(--animation);
     margin-right: 8px;
     display: inline-flex;
     align-items: center;
     justify-content: center;
     fill: transparent;
 }
+
 .policy-check-container .icon {
     fill: var(--navy-blue);
+    transition: opacity var(--animation);
+    opacity: 0;
 }
-.modal-form .checkbox:checked + .label .custom-checkbox {
-    background-color: var(--ocean);
-    border: none;
-    fill: var(--cloud);
+
+.modal-form .checkbox:checked + .accept-text .custom-checkbox .icon {
+    opacity: 1;
 }
+
 .policy-check-container .underline {
     text-decoration: underline;
 }
@@ -541,4 +533,328 @@ a:active {
 .submit-btn:hover,
 .submit-btn:focus {
     background-color: var(--ocean);
+}
+
+@media (min-width: 320px) {
+    .header .container > .nav,
+    .header .container > .address {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        margin: -1px;
+        border: 0;
+        padding: 0;
+
+        white-space: nowrap;
+        clip-path: inset(100%);
+        clip: rect(0 0 0 0);
+        overflow: hidden;
+    }
+    .header .logo {
+        padding: 16px 0;
+    }
+    .hamburger-menu {
+        /* скрываем чекбокс */
+        #menu__toggle {
+            opacity: 0;
+        }
+        /* стилизуем кнопку */
+        .menu__btn {
+            display: flex; /* используем flex для центрирования содержимого */
+            align-items: center; /* центрируем содержимое кнопки */
+            position: fixed;
+            top: 16px;
+            right: 16px;
+            width: 24px;
+            height: 24px;
+            cursor: pointer;
+            z-index: 1;
+        }
+        /* добавляем "гамбургер" */
+        .menu__btn > span,
+        .menu__btn > span::before,
+        .menu__btn > span::after {
+            display: block;
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            background-color: var(--navy-blue);
+        }
+        .menu__btn > span::before {
+            content: "";
+            top: -8px;
+        }
+        .menu__btn > span::after {
+            content: "";
+            top: 8px;
+        }
+        /*  */
+        .menu__box {
+            display: block;
+            position: fixed;
+            visibility: hidden;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 80px 0;
+            list-style: none;
+            text-align: center;
+            background-color: #eceff1;
+            box-shadow: 1px 0px 6px rgba(0, 0, 0, 0.2);
+        }
+        /* элементы меню */
+        .menu__item {
+            display: block;
+            padding: 12px 24px;
+            color: #333;
+            font-family: "Roboto", sans-serif;
+            font-size: 20px;
+            font-weight: 600;
+            text-decoration: none;
+        }
+        .menu__item:hover {
+            background-color: #cfd8dc;
+        }
+        #menu__toggle:checked ~ .menu__btn > span {
+            width: 9.5px;
+            transform: rotate(45deg);
+        }
+        #menu__toggle:checked ~ .menu__btn > span::before {
+            top: 0;
+            transform: rotate(0);
+        }
+        #menu__toggle:checked ~ .menu__btn > span::after {
+            top: 0;
+            transform: rotate(90deg);
+        }
+        #menu__toggle:checked ~ .menu__box {
+            visibility: visible;
+            left: 0;
+        }
+    }
+
+    .header .container {
+        justify-content: space-between;
+    }
+    .header .nav {
+        justify-content: space-between;
+    }
+
+    .nav .header-list,
+    .address .header-list {
+        gap: 40px;
+    }
+    .section {
+        padding: 96px 0;
+    }
+    .hero .main-title {
+        font-size: 36px;
+        max-width: 375px;
+    }
+    .features .card-list {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .features .c-width {
+        max-width: 400px;
+    }
+    .features .element-title {
+        text-align: center;
+        font-size: 36px;
+    }
+    .team .card-list {
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+    .team .card-list .card {
+        margin-left: calc((100% - 264px) / 2);
+        margin-right: calc((100% - 264px) / 2);
+    }
+    .portfolio {
+        .list {
+            justify-content: center;
+        }
+        .c-width {
+            max-width: 100%;
+        }
+    }
+    .footer {
+        padding: 96px 0;
+    }
+    .footer .container {
+        flex-wrap: wrap;
+    }
+
+    .footer .first-row {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 72px;
+    }
+    .footer-info {
+        margin-right: 0;
+        margin: 0 calc((100% - 264px) / 2);
+    }
+    .footer .first-row {
+        width: 100%;
+        margin-bottom: 72px;
+    }
+    .footer .logo,
+    .footer-links-title {
+        width: 100%;
+        text-align: center;
+    }
+
+    .subscribe {
+        display: flex;
+        flex-wrap: wrap;
+        max-width: 300px;
+        justify-content: center;
+        margin: 0 auto;
+    }
+    .subscribe-form {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+}
+@media (min-width: 768px) {
+    .header .logo {
+        padding: 0;
+    }
+    .hamburger-menu {
+        display: none;
+    }
+    .header .container > .nav,
+    .header .container > .address {
+        position: static;
+        width: auto;
+        height: auto;
+        margin: 0;
+        clip-path: inherit;
+    }
+    .address {
+        align-content: center;
+    }
+    .address .header-list {
+        gap: 12px;
+        max-width: 120px;
+        flex-wrap: wrap;
+    }
+    .address .header-link {
+        font-size: 12px;
+        padding: 0;
+        width: 100%;
+    }
+
+    .hero .main-title {
+        max-width: 496px;
+        font-size: 56px;
+    }
+    .features .c-width {
+        width: calc((100% - 24px) / 2);
+    }
+    .features .element-title {
+        text-align: start;
+    }
+
+    .team .card-list .card {
+        margin: 0;
+    }
+    .team .card-list .card:nth-of-type(2) {
+        margin-right: calc((100% - 264px * 2 - 24px) / 4);
+    }
+    .team .card-list .card:nth-of-type(1) {
+        margin-left: calc((100% - 264px * 2 - 24px) / 4);
+    }
+    .portfolio {
+        .c-width {
+            max-width: calc((100% - 24px) / 2);
+        }
+        img {
+            width: 100%;
+        }
+    }
+    .footer .first-row {
+        gap: 24px;
+    }
+    .footer .first-row {
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+    }
+
+    .footer-info {
+        margin: 0;
+        margin-left: 92px;
+    }
+    .footer .logo {
+        width: auto;
+        text-align: start;
+    }
+
+    .subscribe {
+        display: block;
+        max-width: 100%;
+        margin: 0;
+        margin-left: 92px;
+    }
+}
+
+@media (min-width: 1158px) {
+    .address .header-list {
+        gap: 40px;
+        max-width: 100%;
+        flex-wrap: nowrap;
+    }
+    .address .header-link {
+        font-size: 16px;
+    }
+    .features .feature-icon {
+        display: flex;
+    }
+    .features .c-width {
+        width: calc((100% - 72px) / 4);
+    }
+    .features .feature-icon {
+        display: flex;
+    }
+    .features .element-title {
+        font-size: 20px;
+    }
+    .portfolio {
+        .c-width {
+            max-width: calc((100% - 48px) / 3);
+        }
+    }
+    .section {
+        padding: 120px 0;
+    }
+    .header {
+        .logo {
+            margin-right: 76px;
+        }
+        .address {
+            margin-left: 332px;
+            font-style: normal;
+        }
+    }
+    .team .card-list .card:nth-of-type(2),
+    .team .card-list .card:nth-of-type(1) {
+        margin: 0;
+    }
+    .footer {
+        padding: 100px 0;
+    }
+    .footer .container {
+        flex-wrap: nowrap;
+    }
+    .footer-info {
+        margin-right: 120px;
+        margin-left: 0;
+    }
+    .subscribe {
+        margin-left: 80px;
+    }
 }

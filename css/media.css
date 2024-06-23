@@ -1,0 +1,26 @@
+@media (min-width: 1158px) {
+    .features .feature-icon {
+        display: flex;
+    }
+    .features .c-width {
+        width: calc((100% - 24px) / 4);
+    }
+    .features .feature-icon {
+        display: flex;
+    }
+}
+@media (min-width: 320px) {
+    .features .c-width {
+        width: 100%;
+    }
+}
+@media (min-width: 768px) {
+    .card-list {
+        flex-wrap: wrap;
+    }
+    .features .c-width {
+        width: calc((100% - 24px) / 2);
+    }
+}
+@media (min-width: 320px) and (max-width: 1157px) {
+}
