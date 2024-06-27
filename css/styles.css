@@ -778,9 +778,6 @@ a:active {
     padding: 0 16px;
 }
 
-.header .logo {
-    margin-right: 76px;
-}
 @media (min-width: 768px) {
     .container {
         max-width: 768px;
@@ -789,6 +786,7 @@ a:active {
     }
     .header .logo {
         padding: 0;
+        margin-right: 76px;
     }
     .hamburger-menu {
         display: none;
